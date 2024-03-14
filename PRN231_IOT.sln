@@ -10,6 +10,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{DCAB3868-41B7-4112-8E27-D8E51CD01406}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{16B6E68E-14FE-482C-87F0-C64515AC345C}"
+	ProjectSection(SolutionItems) = preProject
+		DDLScript.sql = DDLScript.sql
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{D1F1DF1F-19C6-4CA4-83B0-54DBC16DB39F}"
 EndProject
