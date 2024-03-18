@@ -1,0 +1,4 @@
+
+ªcsharpsquid:S1450"[Remove the field '_securityKey' and declare it as a local variable in the relevant methods.(³ãÜ€ùÿÿÿÿ8òÖ‰ýä1J$8f6d98a3-42ca-4138-b843-b7afc417597f
+csharpsquid:S1144<"0Remove the unused private method 'HashPassword'.(ÁÛÉ øÿÿÿÿ8é„£ýä1J$14733c42-250c-422d-aff2-cc027c04933e
+«csharpsquid:S4487"bRemove this unread private field '_jwtSecurityTokenHandler' or refactor the code to use its value.(¸ôz8óÖ‰ýä1J$b0f771e9-9719-4e15-b2a9-dc541f4b951d

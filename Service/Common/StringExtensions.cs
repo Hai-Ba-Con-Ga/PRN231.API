@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Service.Common
 {
-	public static class StringExtensoins
+	public static class StringExtensions
 	{
 		public static string ToSnakeCase(this string input)
 		{

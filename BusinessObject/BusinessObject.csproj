@@ -27,7 +27,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Dto\" />
 	  <Folder Include="Model\" />
 	</ItemGroup>
 

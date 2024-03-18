@@ -50,7 +50,7 @@ public partial class Account
 
     public int? UpdatedBy { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     [InverseProperty("Owner")]
     public virtual ICollection<Device> Devices { get; set; } = new List<Device>();

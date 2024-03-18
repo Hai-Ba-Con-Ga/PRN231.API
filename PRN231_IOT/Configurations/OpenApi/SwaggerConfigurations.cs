@@ -47,7 +47,7 @@ namespace WebAPI.Configurations.OpenApi
             return services;
         }
         //use swagger
-        public static IApplicationBuilder UseSwagger(this IApplicationBuilder app)
+        public static IApplicationBuilder UseSwaggerAPI(this IApplicationBuilder app)
         {
             app.UseOpenApi();
             app.UseSwaggerUi(options =>

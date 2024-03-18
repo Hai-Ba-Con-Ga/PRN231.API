@@ -1,0 +1,11 @@
+
+“csharpsquid:S3236B"KRemove this argument from the method call; it hides the caller information.(àé‘ıÿÿÿÿJ$f5a06def-4c3e-4bd2-bbee-6d4badac6e8c
+“csharpsquid:S3236["KRemove this argument from the method call; it hides the caller information.(†Áƒ„ıÿÿÿÿJ$c5efccef-90c4-47b4-b19a-e283cb1836a6
+“csharpsquid:S3236x"KRemove this argument from the method call; it hides the caller information.(¢öìªùÿÿÿÿJ$d3d41cd9-d333-43ef-a9cf-ac4254f44881
+mcsharpsquid:S1125k"*Remove the unnecessary Boolean literal(s).(ŒÊ¥®J$29dc3baf-9880-47b4-9a2d-a478542a2822
+mcsharpsquid:S1125k"*Remove the unnecessary Boolean literal(s).(ŒÊ¥®J$e62959e2-0f8a-4b3e-93c1-c8496e52eb34
+mcsharpsquid:S1125s"*Remove the unnecessary Boolean literal(s).(ŒÊ¥®J$b279bb6e-8dc9-4e47-a6c9-649fee7c5fed
+mcsharpsquid:S1125s"*Remove the unnecessary Boolean literal(s).(ŒÊ¥®J$62b649d5-bf9c-4bf1-bccf-eaccf7474405
+‘csharpsquid:S6602k"N"Find" method should be used instead of the "FirstOrDefault" extension method.(ŒÊ¥®J$071d301a-3c65-424d-9846-ab1be7b5eae9
+‘csharpsquid:S6602s"N"Find" method should be used instead of the "FirstOrDefault" extension method.(ŒÊ¥®J$fa872917-f80f-497a-8701-ee42f977cd6e
+šcsharpsquid:S6605n"RCollection-specific "Exists" method should be used instead of the "Any" extension.(åŞƒÈıÿÿÿÿJ$2802fcac-b7cc-4210-ac30-92a925390008

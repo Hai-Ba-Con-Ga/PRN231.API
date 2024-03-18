@@ -138,7 +138,7 @@ namespace Repository.Helper
             if (isDeletedProperty == null)
                 throw new ArgumentNullException($"Entity {typeof(TEntity).Name} has not IsDeleted property");
 
-            ParameterExpression parameter = Expression.Parameter(typeof(TEntity), "isDeleted");
+            ParameterExpression parameter = Expression.Parameter(typeof(TEntity), "entity");
             MemberExpression isDeletedPropertyAccess = Expression.Property(parameter, isDeletedProperty);
             ConstantExpression isDeleted_is_false = Expression.Constant(false);
             BinaryExpression equalityExpression = Expression.Equal(isDeletedPropertyAccess, isDeleted_is_false);

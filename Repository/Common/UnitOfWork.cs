@@ -11,9 +11,9 @@ public class UnitOfWork : IUnitOfWork
     private readonly Dictionary<string, object> _repositoryDictionary;
     private IDbContextTransaction? transaction;
 
-    public UnitOfWork()
+    public UnitOfWork(DbContext dbContext)
     {
-        //_dbContext = new();
+        _dbContext = dbContext;
         _repositoryDictionary = new Dictionary<string, object>();
     }
 
