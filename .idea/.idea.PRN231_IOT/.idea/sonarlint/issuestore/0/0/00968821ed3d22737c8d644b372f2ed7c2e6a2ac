@@ -1,3 +1,0 @@
-
-•csharpsquid:S101	"cRename class 'JWTTokenService' to match pascal case naming rules, consider using 'JwtTokenService'.(„ö¬ùJ$12120a82-7485-4d5e-97ff-be303ef30eef
-§csharpsquid:S4487"bRemove this unread private field '_jwtSecurityTokenHandler' or refactor the code to use its value.(Å∏ÙzJ$32311788-93b0-49d1-8938-e36219ed6f89
