@@ -36,7 +36,7 @@ public partial class CollectedDatum
 
     public int? UpdatedBy { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     [ForeignKey("CollectedDataTypeId")]
     [InverseProperty("CollectedData")]

@@ -26,7 +26,7 @@ public partial class CollectedDataType
 
     public int? UpdatedBy { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     [InverseProperty("CollectedDataType")]
     public virtual ICollection<CollectedDatum> CollectedData { get; set; } = new List<CollectedDatum>();

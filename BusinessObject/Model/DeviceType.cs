@@ -26,7 +26,7 @@ public partial class DeviceType
 
     public int? UpdatedBy { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     [InverseProperty("DeviceType")]
     public virtual ICollection<Device> Devices { get; set; } = new List<Device>();

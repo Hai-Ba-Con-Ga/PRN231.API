@@ -37,7 +37,7 @@ public partial class Device
 
     public int? UpdatedBy { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     [InverseProperty("Device")]
     public virtual ICollection<CollectedDatum> CollectedData { get; set; } = new List<CollectedDatum>();
