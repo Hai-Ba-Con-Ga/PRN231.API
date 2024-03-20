@@ -24,6 +24,7 @@ namespace WebAPI.Configurations
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IDeviceTypeService, DeviceTypeService>();
             services.AddFluentValidation();
         }
     }
