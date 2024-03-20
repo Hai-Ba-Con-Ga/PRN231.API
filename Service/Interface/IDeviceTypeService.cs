@@ -1,17 +1,15 @@
 ﻿using BusinessObject.Common;
+using BusinessObject.Common.PagedList;
 using BusinessObject.Dto.DeviceType;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BusinessObject.Model;
 
-namespace Service.Interface
+namespace Service.Interface;
+
+public interface IDeviceTypeService
 {
-    public interface IDeviceTypeService
-    {
-        Task<PagingApiResponse<DeviceTypeResponse>> SearchDeviceType(SearchBaseReq searchRequest);
-        Task<ApiResponse<bool>> CreateDeviceType(CreateDeviceTypeRequest request);
-
-    }
+    Task<PagingApiResponse<DeviceTypeResponse>> SearchAsync(string keySearch, PagingQuery pagingQuery, string orderBy);
+    Task<ApiResponse<DeviceTypeResponse>> GetDeviceType(int id);
+    Task<ApiResponse<bool>> CreateAsync(CreateDeviceTypeRequest request);
+    Task<ApiResponse<bool>> UpdateAsync(int id, CreateDeviceTypeRequest request);
+    Task<ApiResponse<bool>> DeleteAsync(int id);
 }

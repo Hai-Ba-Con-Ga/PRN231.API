@@ -2,6 +2,7 @@
 using BusinessObject.Model;
 using Microsoft.EntityFrameworkCore;
 using Repository.Common;
+using Service.Common;
 using Service.Implement;
 using Service.Interface;
 using WebAPI.Middleware;
@@ -32,6 +33,7 @@ namespace WebAPI.Configurations
             services.AddScoped<IDeviceService, DeviceService>();
 
             services.AddFluentValidation();
+            services.RegisterMapsterMappingTypes();
         }
     }
 }

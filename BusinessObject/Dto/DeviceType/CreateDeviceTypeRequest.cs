@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusinessObject.Dto.DeviceType
 {
-    public class CreateDeviceTypeRequest
-    {
+public class CreateDeviceTypeRequest
+{
         [StringLength(100)]
-        public string TypeName { get; set; } = null!;
-    }
+    public string TypeName { get; set; } = null!;
+}
 }
