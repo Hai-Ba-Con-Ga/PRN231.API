@@ -1,7 +1,9 @@
 using BusinessObject.Common;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using System.Reflection;
 
 namespace WebAPI.Configurations.OpenApi
 {
@@ -44,8 +46,18 @@ namespace WebAPI.Configurations.OpenApi
 
                 document.OperationProcessors.Add(new SwaggerHeaderAttributeProcessor());
             });
+
+            services.AddSwaggerGen(c =>
+            {
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+
             return services;
         }
+
         //use swagger
         public static IApplicationBuilder UseSwaggerAPI(this IApplicationBuilder app)
         {
@@ -58,5 +70,6 @@ namespace WebAPI.Configurations.OpenApi
             });
             return app;
         }
+
     }
 }

@@ -13,6 +13,12 @@ namespace BusinessObject.Common
     {
         public HttpStatusCode StatusCode { get; set; }
         public string? Message { get; set; } = null;
-        public PagingResponse<T>? PagingData { get; set; } = default;
+        public int CurrentPage { get; set; }
+        public int TotalPages { get; set; }
+        public int PageSize { get; set; } = 0;
+        public int TotalCount { get; set; }
+        public bool HasPrevious => CurrentPage > 1;
+        public bool HasNext => CurrentPage < TotalPages;
+        public IList<T> Data { get; set; } = default;
     }
 }

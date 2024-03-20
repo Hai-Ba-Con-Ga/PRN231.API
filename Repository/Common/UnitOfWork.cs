@@ -1,4 +1,4 @@
-﻿using BusinessObject;
+﻿using BusinessObject.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Reflection;
@@ -11,9 +11,9 @@ public class UnitOfWork : IUnitOfWork
     private readonly Dictionary<string, object> _repositoryDictionary;
     private IDbContextTransaction? transaction;
 
-    public UnitOfWork(DbContext dbContext)
+    public UnitOfWork()
     {
-        _dbContext = dbContext;
+        _dbContext = new Prn231IotContext();
         _repositoryDictionary = new Dictionary<string, object>();
     }
 

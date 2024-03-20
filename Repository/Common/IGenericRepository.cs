@@ -17,7 +17,7 @@ namespace Repository.Common
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<IEnumerable<TResult>> GetAllAsync<TResult>() where TResult : class;
         Task<IPagedList<TEntity>> SearchAsync(string keySearch, PagingQuery pagingQuery, string orderBy);
-        Task<IPagedList<TResult>> SearchAsync<TResult>(string keySearch, PagingQuery pagingQuery, string orderBy)
+        Task<IPagedList<TResult>> SearchAsync<TResult>(string? keySearch, PagingQuery pagingQuery, string? orderBy)
             where TResult : class;
         Task<bool> IsExist(params int[] ids);
         #endregion Query

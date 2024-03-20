@@ -30,14 +30,11 @@ public class BaseService : IDisposable
         {
             StatusCode = HttpStatusCode.OK,
             Message = message,
-            PagingData = new PagingResponse<T>
-            {
-                Data = data,
-                CurrentPage = data.CurrentPage,
-                PageSize = data.PageSize,
-                TotalCount = data.TotalCount,
-                TotalPages = data.TotalPages
-            }
+            CurrentPage = data.CurrentPage,
+            PageSize = data.PageSize,
+            TotalCount = data.TotalCount,
+            TotalPages = data.TotalPages,
+            Data = data
         };
     }
 

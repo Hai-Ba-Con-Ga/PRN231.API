@@ -17,6 +17,11 @@ public class AccountController : ControllerBase
         _accountService = accountService;
     }
     
+    /// <summary>
+    /// Create account 
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
     [HttpPost]
     [AllowAnonymous]
     public async Task<IActionResult> Create([FromBody] CreateAccountRequest request)
@@ -25,6 +30,11 @@ public class AccountController : ControllerBase
         return StatusCode((int)result.StatusCode, result);
     }
     
+    /// <summary>
+    /// Search account
+    /// </summary>
+    /// <param name="searchBaseReq"></param>
+    /// <returns></returns>
     [HttpGet]
     public async Task<IActionResult> Search([FromQuery] SearchBaseReq searchBaseReq)
     {
@@ -33,13 +43,24 @@ public class AccountController : ControllerBase
         return StatusCode((int)result.StatusCode, result);
     }
     
+    /// <summary>
+    /// Get account by id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
         var result = await _accountService.GetById(id);
         return StatusCode((int)result.StatusCode, result);
     }
-    
+
+    /// <summary>
+    /// Update account
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="request"></param>
+    /// <returns></returns>
     [HttpPut("{id}")]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateAccountRequest request)
     {
@@ -47,6 +68,11 @@ public class AccountController : ControllerBase
         return StatusCode((int)result.StatusCode, result);
     }
     
+    /// <summary>
+    /// Delete account
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {

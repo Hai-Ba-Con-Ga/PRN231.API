@@ -12,18 +12,25 @@ namespace WebAPI.Configurations
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddDbContext<DbContext>(options =>
-            {
-                options.UseSqlServer(AppConfig.ConnectionStrings.DefaultConnection);
-            } , ServiceLifetime.Transient);
+            //services.AddDbContext<DbContext>(options =>
+            //{
+            //    options.UseSqlServer(AppConfig.ConnectionStrings.DefaultConnection);
+            //} , ServiceLifetime.Transient);
 
-            services.AddScoped<DbContext, Prn231IotContext>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //register middleware here
             services.AddScoped(typeof(AuthensMidlleware));
             services.AddScoped(typeof(ExceptionMiddleware));
+
+            //register repository here
+            //services.AddScoped<DbContext, Prn231IotContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            //resgister services here 
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IDeviceTypeService, DeviceTypeService>();
+            services.AddScoped<IDeviceService, DeviceService>();
+
             services.AddFluentValidation();
         }
     }
