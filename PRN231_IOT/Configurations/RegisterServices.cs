@@ -31,6 +31,7 @@ namespace WebAPI.Configurations
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IDeviceTypeService, DeviceTypeService>();
             services.AddScoped<IDeviceService, DeviceService>();
+            services.AddScoped<IDataTypeService, DataTypeService>();
 
             services.AddFluentValidation();
             services.RegisterMapsterMappingTypes();

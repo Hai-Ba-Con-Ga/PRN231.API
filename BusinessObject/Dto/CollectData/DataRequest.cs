@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessObject.Dto.CollectData
 {
-    internal class CollectDataRequest
+    public class DataRequest
     {
     }
 }
