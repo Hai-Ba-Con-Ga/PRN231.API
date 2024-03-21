@@ -8,7 +8,7 @@ namespace BusinessObject.Dto.ReportData
 {
     public class ReportDataResponse
     {
-        public string Data { get; set; } = null!;
+        public string DataValue { get; set; } = null!;
         public string DataUnit { get; set; } = null!;
         public DateTime CreatedDate { get; set; }
     }

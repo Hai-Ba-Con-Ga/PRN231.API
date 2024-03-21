@@ -26,8 +26,11 @@ public partial class Prn231IotContext : DbContext
 
     public virtual DbSet<DeviceType> DeviceTypes { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer(GetConnectionString());
-
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer(GetConnectionString());
+        optionsBuilder.LogTo(Console.WriteLine);
+    }
     private string GetConnectionString()
     {
         IConfiguration config = new ConfigurationBuilder()

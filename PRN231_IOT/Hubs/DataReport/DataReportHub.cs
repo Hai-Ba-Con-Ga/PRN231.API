@@ -8,39 +8,24 @@ namespace WebAPI.Hubs.DataReport
     /// </summary>
     public class DataReportHub : Hub
     {
-        /// <summary>
-        /// _connections : Key = SerialId, Value = ConnectionId
-        /// </summary>
-        private static readonly ConcurrentDictionary<string, string> _connections = new();
-
         public DataReportHub()
         {
         }
 
-        public string? GetConnectionId(string serialId)
-        {
-            _connections.TryGetValue(serialId, out string? connectionId);
-            return connectionId;
-        }
-
-        public override Task OnConnectedAsync()
+        public override async Task OnConnectedAsync()
         {
             var clientId = Context.ConnectionId;
             var serialId = (string)Context.GetHttpContext().Request.Query["searialId"];
 
-            _connections.TryAdd(serialId, clientId);
-
-            return base.OnConnectedAsync();
+            await Groups.AddToGroupAsync(clientId, serialId);
         }
 
-        public override Task OnDisconnectedAsync(Exception? exception)
+        public override async Task OnDisconnectedAsync(Exception? exception)
         {
             var clientId = Context.ConnectionId;
             var serialId = (string)Context.GetHttpContext().Request.Query["searialId"];
 
-            _connections.Remove(serialId ?? "", out _);
-
-            return base.OnDisconnectedAsync(exception);
+            await Groups.RemoveFromGroupAsync(clientId, serialId);
         }
     }
 }

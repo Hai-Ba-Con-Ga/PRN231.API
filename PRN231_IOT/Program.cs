@@ -38,8 +38,9 @@ namespace WebAPI
                 options.AddPolicy("AllowAll", builder =>
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
+                // this defines a CORS policy for SignalR hub
                 options.AddPolicy("SignalRHubs", builder => builder
-               .AllowAnyOrigin()
+               .WithOrigins(new string[] { "http://localhost:3000" })
                .AllowAnyHeader()
                .WithMethods("GET", "POST")
                .AllowCredentials());
@@ -50,8 +51,6 @@ namespace WebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwagger();
 
-
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -59,6 +58,9 @@ namespace WebAPI
             {
                 app.UseSwaggerAPI();
             }
+
+            app.UseCors("AllowAll");
+
             //use middleware
             app.UseMiddleware<ExceptionMiddleware>();
 

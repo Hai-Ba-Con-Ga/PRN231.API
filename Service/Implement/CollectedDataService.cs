@@ -9,9 +9,9 @@ using Service.Interface;
 
 namespace Service.Implement;
 
-public class DatumService : BaseService, IDatumService
+public class CollectedDataService : BaseService, ICollectedDataService
 {
-    public DatumService(IUnitOfWork unitOfWork) : base(unitOfWork)
+    public CollectedDataService(IUnitOfWork unitOfWork) : base(unitOfWork)
     {
     }
     public async Task<PagingApiResponse<DatumResponse>> SearchAsync(string keySearch, PagingQuery pagingQuery, string orderBy)
@@ -29,7 +29,7 @@ public class DatumService : BaseService, IDatumService
         }
     }
 
-    public async Task<ApiResponse<DatumResponse>> GetDatum(int id)
+    public async Task<ApiResponse<DatumResponse>> GetCollectedData(int id)
     {
         try 
         {
@@ -46,7 +46,7 @@ public class DatumService : BaseService, IDatumService
         }
     }
 
-    public async Task<ApiResponse<bool>> CreateAsync(DatumRequest request)
+    public async Task<ApiResponse<bool>> CreateAsync(CollectedDataRequest request)
     {
         try
         {
@@ -60,7 +60,7 @@ public class DatumService : BaseService, IDatumService
         }
     }
 
-    public  async Task<ApiResponse<bool>> UpdateAsync(int id, DatumRequest request)
+    public  async Task<ApiResponse<bool>> UpdateAsync(int id, CollectedDataRequest request)
     {
         try 
         {

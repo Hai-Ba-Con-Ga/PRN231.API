@@ -4,12 +4,12 @@ using BusinessObject.Dto.CollectData;
 
 namespace Service.Interface;
 
-public interface IDatumService
+public interface ICollectedDataService
 {
     Task<PagingApiResponse<DatumResponse>> SearchAsync(string keySearch, PagingQuery pagingQuery, string orderBy);
-    Task<ApiResponse<DatumResponse>> GetDatum(int id);
-    Task<ApiResponse<bool>> CreateAsync(DatumRequest request);
-    Task<ApiResponse<bool>> UpdateAsync(int id, DatumRequest request);
+    Task<ApiResponse<DatumResponse>> GetCollectedData(int id);
+    Task<ApiResponse<bool>> CreateAsync(CollectedDataRequest request);
+    Task<ApiResponse<bool>> UpdateAsync(int id, CollectedDataRequest request);
     Task<ApiResponse<bool>> DeleteAsync(int id);
     
 }

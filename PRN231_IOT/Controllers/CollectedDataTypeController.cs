@@ -7,11 +7,11 @@ namespace WebAPI.Controllers;
 
 [ApiController]
 [Route("api/v1/data-type")]
-public class DataTypeController : ControllerBase
+public class CollectedDataTypeController : ControllerBase
 {
     private readonly IDataTypeService _dataTypeService;
 
-    public DataTypeController(IDataTypeService dataTypeService)
+    public CollectedDataTypeController(IDataTypeService dataTypeService)
     {
         _dataTypeService = dataTypeService;
     }
