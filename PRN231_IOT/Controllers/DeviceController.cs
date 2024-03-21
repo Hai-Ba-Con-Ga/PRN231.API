@@ -6,7 +6,7 @@ using Service.Interface;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/device")]
     [ApiController]
     public class DeviceController : ControllerBase
     {

@@ -13,7 +13,6 @@ namespace BusinessObject.Dto.DeviceType
         public int DeviceTypeId { get; set; }
 
         public string TypeName { get; set; }  
-
         public int? NumberOfDevices { get; set; } = null;
     }
 }
