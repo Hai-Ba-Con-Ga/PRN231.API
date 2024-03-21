@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using WebAPI.Configurations;
 using WebAPI.Configurations.OpenApi;
+using WebAPI.Hubs.DataReport;
 using WebAPI.Middleware;
 
 namespace WebAPI
@@ -27,12 +28,29 @@ namespace WebAPI
                             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppConfig.JwtSetting.IssuerSigningKey))
                     };
                 });
-            
+
             builder.Services.AddServices();
+            builder.Services.AddSignalR();
+
+            builder.Services.AddCors(options =>
+            {
+                // this defines a CORS policy called "default"
+                options.AddPolicy("AllowAll", builder =>
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+                options.AddPolicy("SignalRHubs", builder => builder
+               .AllowAnyOrigin()
+               .AllowAnyHeader()
+               .WithMethods("GET", "POST")
+               .AllowCredentials());
+
+            });
+
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwagger();
+
+
 
             var app = builder.Build();
 
@@ -41,8 +59,12 @@ namespace WebAPI
             {
                 app.UseSwaggerAPI();
             }
-
+            //use middleware
             app.UseMiddleware<ExceptionMiddleware>();
+
+            //use SignalR hub
+            app.MapHub<DataReportHub>("/hubs/data-report").RequireCors("SignalRHubs");
+
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
