@@ -52,6 +52,7 @@ public class CollectedDataController : ControllerBase
                     CreatedDate = DateTime.Now,
                     DataValue = request.DataValue,
                     DataUnit = request.DataUnit,
+                    TypeId = request.CollectedDataTypeId,
                 });
 
             }).ConfigureAwait(false);
