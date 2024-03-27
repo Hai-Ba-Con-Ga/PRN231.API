@@ -51,6 +51,14 @@ public class CollectedDataService : BaseService, ICollectedDataService
         try
         {
             var entity = request.Adapt <CollectedDatum>();
+
+            var device = await _unitOfWork.Resolve<Device>().FindAsync(x => x.SerialId == request.SerialId);
+
+            if (device == null)
+                return Failed<bool>("Device is not found");
+
+            entity.DeviceId = device.DeviceId;
+
             await _unitOfWork.Resolve<CollectedDatum>().CreateAsync(entity);
             await _unitOfWork.SaveChangesAsync();
             return Success(true);
