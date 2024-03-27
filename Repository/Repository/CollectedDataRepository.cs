@@ -16,7 +16,9 @@ public class CollectedDataRepository : GenericRepository<CollectedDatum>
     {
         return _dbSet.AsNoTracking()
             .WhereWithExist(p => (string.IsNullOrEmpty(keySearch) ||
-                                  p.DataValue.Contains(keySearch)))
+                                  p.DataValue.Contains(keySearch) || 
+                                  p.CollectedDataType.DataTypeName.ToString() == keySearch
+                                  ))
             .AddOrderByString(orderBy)
             .ToPagedListAsync(pagingQuery);
     }
@@ -25,7 +27,8 @@ public class CollectedDataRepository : GenericRepository<CollectedDatum>
     {
         return _dbSet.AsNoTracking()
             .WhereWithExist(p => (string.IsNullOrEmpty(keySearch)
-                            || p.Device.SerialId == keySearch))
+                            || p.Device.SerialId == keySearch
+                            || p.CollectedDataType.DataTypeName.ToString() == keySearch))
             .Include(x => x.Device)
             .AddOrderByString(orderBy)
             .SelectWithField<CollectedDatum, TResult>()
