@@ -32,7 +32,7 @@ class SignalRConnector {
           console.log(objJsonString);
         }
       );
-    };
+  };
   }
 
   // public newMessage = (messages: string) => {

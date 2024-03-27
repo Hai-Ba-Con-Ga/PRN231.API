@@ -10,6 +10,8 @@ namespace BusinessObject.Dto.ReportData
     {
         public string DataValue { get; set; } = null!;
         public string DataUnit { get; set; } = null!;
+        public int TypeId { get; set; }
         public DateTime CreatedDate { get; set; }
+
     }
 }

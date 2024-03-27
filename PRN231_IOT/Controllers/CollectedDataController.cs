@@ -48,12 +48,13 @@ public class CollectedDataController : ControllerBase
 
                 if (dataReportHubContext == null)
                     return;
-
+                
                 await dataReportHubContext.SendDataReport(request.SerialId, new ReportDataResponse
                 {
                     CreatedDate = DateTime.Now,
                     DataValue = request.DataValue,
                     DataUnit = request.DataUnit,
+                    TypeId = request.CollectedDataTypeId,
                 });
 
             }).ConfigureAwait(false);
