@@ -14,35 +14,35 @@ public class CollectedDataService : BaseService, ICollectedDataService
     public CollectedDataService(IUnitOfWork unitOfWork) : base(unitOfWork)
     {
     }
-    public async Task<PagingApiResponse<DatumResponse>> SearchAsync(string keySearch, PagingQuery pagingQuery, string orderBy)
+    public async Task<PagingApiResponse<DataResponse>> SearchAsync(string keySearch, PagingQuery pagingQuery, string orderBy)
     {
         try 
         {
             var result = await _unitOfWork.Resolve<CollectedDatum>()
-                .SearchAsync<DatumResponse>(keySearch, pagingQuery, orderBy);
+                .SearchAsync<DataResponse>(keySearch, pagingQuery, orderBy);
 
-            return Success(result);
+        return Success(result);
         }
         catch (Exception ex)
         {
-            return PagingFailed<DatumResponse>(ex.GetExceptionMessage());
+            return PagingFailed<DataResponse>(ex.GetExceptionMessage());
         }
     }
 
-    public async Task<ApiResponse<DatumResponse>> GetCollectedData(int id)
+    public async Task<ApiResponse<DataResponse>> GetCollectedData(int id)
     {
         try 
         {
             var result = await _unitOfWork.Resolve<CollectedDatum>().FindAsync(id);
 
             if (result == null)
-                return Failed<DatumResponse>("Datum is not found");
+                return Failed<DataResponse>("Datum is not found");
 
-            return Success(result.Adapt<DatumResponse>());
+            return Success(result.Adapt<DataResponse>());
         }
         catch (Exception ex)
         {
-            return Failed<DatumResponse>(ex.GetExceptionMessage());
+            return Failed<DataResponse>(ex.GetExceptionMessage());
         }
     }
 

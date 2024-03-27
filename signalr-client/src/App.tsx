@@ -1,26 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import SignalRConnector from "./signalr-connection";
+import ReportDataHubConnector from "./ReportDataHubConnector";
+import ReportDataResponse from "./ReportDataResponse";
 
 function App() {
-  const { reportDataUpdateEvents } = SignalRConnector();
-  const [message, setMessage] = useState("initial value");
+  const [inputValue, setInputValue] = useState("");
+  const [message, setMessage] = useState("init value");
+  const [messsageArr, setMessageArr] = useState([]);
+  const [serialId, setSerialId] = useState<string>();
 
   useEffect(() => {
-    // events((_, message) => setMessage(message));
-    reportDataUpdateEvents((reportData) => 
-      setMessage(reportData));
-  });
+    if (serialId) {
+      const connector = ReportDataHubConnector.getInstance(serialId);
+
+      console.log(`at useEffect : hub with serialId : ${serialId}`);
+      connector.reportDataUpdateEvents((reportData) => setMessage(reportData));
+    }
+  }, [serialId]);
+
+  useEffect(() => {
+    setMessageArr((prevState) => ([...prevState, message]));
+  }, [message]);
 
   return (
     <div className="App">
       <span>
-        message from signalR: <span style={{ color: "green" }}>{message}</span>{" "}
+        message from signalR:{" "}
+        <span style={{ color: "green" }}>{messsageArr.join("\r\n")}</span>{" "}
       </span>
       <br />
-      <button>
-        send date{" "}
-      </button>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button onClick={() => setSerialId(inputValue)}>Set Serial</button>
     </div>
   );
 }

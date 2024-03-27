@@ -40,16 +40,14 @@ public class CollectedDataController : ControllerBase
     {
         var result = await _dataService.CreateAsync(request);
 
+        // Send data report to client
         if (result.StatusCode == System.Net.HttpStatusCode.OK)
         {
             _ = Task.Run(async () =>
             {
                 var dataReportHubContext = _serviceProvider.GetService<IHubContext<DataReportHub>>();
 
-                if (dataReportHubContext == null)
-                    return;
-
-                await dataReportHubContext.SendDataReport(request.SerialId, new ReportDataResponse
+                await dataReportHubContext.SendDataReport(request.SerialId, new DataReportResponse
                 {
                     CreatedDate = DateTime.Now,
                     DataValue = request.DataValue,

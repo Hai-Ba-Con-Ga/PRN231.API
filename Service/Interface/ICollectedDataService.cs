@@ -6,8 +6,8 @@ namespace Service.Interface;
 
 public interface ICollectedDataService
 {
-    Task<PagingApiResponse<DatumResponse>> SearchAsync(string keySearch, PagingQuery pagingQuery, string orderBy);
-    Task<ApiResponse<DatumResponse>> GetCollectedData(int id);
+    Task<PagingApiResponse<DataResponse>> SearchAsync(string keySearch, PagingQuery pagingQuery, string orderBy);
+    Task<ApiResponse<DataResponse>> GetCollectedData(int id);
     Task<ApiResponse<bool>> CreateAsync(CollectedDataRequest request);
     Task<ApiResponse<bool>> UpdateAsync(int id, CollectedDataRequest request);
     Task<ApiResponse<bool>> DeleteAsync(int id);

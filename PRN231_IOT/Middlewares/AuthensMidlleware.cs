@@ -26,7 +26,7 @@ namespace WebAPI.Middleware
             //}
 
             //authentication for signalR Hub
-            if (context.Request.Path.StartsWithSegments("/hubs"))
+            if (context.Request.Path.Value.Contains("/hubs"))
             {
                 var accessToken = context.Request.Query["access_token"];
 

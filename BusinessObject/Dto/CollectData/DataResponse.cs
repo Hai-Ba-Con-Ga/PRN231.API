@@ -2,7 +2,7 @@ using BusinessObject.Dto.Device;
 
 namespace BusinessObject.Dto.CollectData;
 
-public class DatumResponse
+public class DataResponse
 {
     public int CollectedDataId { get; set; }
     public string DataValue { get; set; } = null!;

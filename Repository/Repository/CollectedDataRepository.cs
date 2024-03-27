@@ -6,9 +6,9 @@ using Repository.Helper;
 
 namespace Repository.Repository;
 
-public class DatumRepository : GenericRepository<CollectedDatum>
+public class CollectedDataRepository : GenericRepository<CollectedDatum>
 {
-    public DatumRepository(DbContext context) : base(context)
+    public CollectedDataRepository(DbContext context) : base(context)
     {
     }
 
@@ -24,8 +24,8 @@ public class DatumRepository : GenericRepository<CollectedDatum>
     public override Task<IPagedList<TResult>> SearchAsync<TResult>(string keySearch, PagingQuery pagingQuery, string orderBy)
     {
         return _dbSet.AsNoTracking()
-            .WhereWithExist(p => (string.IsNullOrEmpty(keySearch) ||
-                                  p.DataValue.Contains(keySearch)))
+            .WhereWithExist(p => (string.IsNullOrEmpty(keySearch)
+                            || p.Device.SerialId == keySearch))
             .Include(x => x.Device)
             .AddOrderByString(orderBy)
             .SelectWithField<CollectedDatum, TResult>()

@@ -29,7 +29,6 @@ public partial class Prn231IotContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(GetConnectionString());
-        optionsBuilder.LogTo(Console.WriteLine);
     }
     private string GetConnectionString()
     {

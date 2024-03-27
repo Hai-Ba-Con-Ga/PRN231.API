@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessObject.Dto.ReportData
 {
-    public class ReportDataResponse
+    public class DataReportResponse
     {
         public string DataValue { get; set; } = null!;
         public string DataUnit { get; set; } = null!;
