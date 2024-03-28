@@ -14,6 +14,9 @@ namespace WebAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+
+            builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: false);
             builder.Configuration.SettingsBinding();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
