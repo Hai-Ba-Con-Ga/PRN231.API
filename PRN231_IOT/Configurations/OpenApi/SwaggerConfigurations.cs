@@ -31,6 +31,10 @@ namespace WebAPI.Configurations.OpenApi
                         Name = AppConfig.SwaggerConfig.LicenseName,
                         Url = AppConfig.SwaggerConfig.LicenseUrl
                     };
+                    doc.Servers.Add(new() { 
+                        Url = "https://iot.wyvernp.id.vn",
+                        Description = "Staging"
+                    });
                 };
                 document.AddSecurity(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
                 {
