@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BusinessObject.Common;
 using BusinessObject.Dto.Account;
+using BusinessObject.Dto.Auth;
 using BusinessObject.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -36,18 +37,23 @@ namespace Service.Implement
         }
 
         //login
-        public async Task<ApiResponse<string>> Login(LoginRequest request)
+        public async Task<ApiResponse<LoginResponse>> Login(LoginRequest request)
         {
             var account = await _unitOfWork.Resolve<Account>().FindAsync(x => x.Username.Equals(request.Username));
             // Check if username is existed
             if (account == null)
-                return Failed<string>("Username is not existed");
+                return Failed<LoginResponse>("Username is not existed", System.Net.HttpStatusCode.BadRequest);
             // Check if password is correct
             if (!VerifyPassword(account.Password, request.Password))
-                return Failed<string>("Password is incorrect");
+                return Failed<LoginResponse>("Password is incorrect", System.Net.HttpStatusCode.BadRequest);
             // generate token
             var token = GenerateToken(account);
-            return Success(token);
+
+            return Success(new LoginResponse()
+            {
+                AccessToken = token,
+                AccountId = account.AccountId
+            });
         }
 
         //register
